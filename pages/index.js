@@ -1,23 +1,23 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { BalanceComponent } from '../components/w3b/BalanceComponent'
 import { useSelector, useDispatch } from 'react-redux'
 import HomeWrapper from '../components/layout'
-import { WalletLogin } from '../components/w3b/WalletLogin'
-// import { WalletLogin } from '../components/w3b/WalletLogin'
 
 
 export default function Home() {
 
   const store = useSelector((state) => state.theme)
-
-
+  // const [injectedProvider, setInjectedProvider] = useState();
+  
+  
   return (
 
     <HomeWrapper >
-          <div>
+          <div
+          className='mt-11'
+          >
             <h1
-            className='dark:text-snow'
+            className='dark:text-snow text-xl '
             >
               Connect Wallet to report malicious IP.
             </h1>

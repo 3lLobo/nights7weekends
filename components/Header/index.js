@@ -1,14 +1,19 @@
 // import { Disclosure } from '@chakra-ui/react'
 import { HiMenu, HiX } from 'react-icons/hi'
 import { ColorModeToggle } from './colorModeToggle'
-import { motion } from "framer-motion"
 import Image from 'next/image'
 import { WalletLogin } from '../w3b/WalletLogin'
+import { ConnectButton } from '../Buttons/ConnectButton'
+import { useSelector, useDispatch } from 'react-redux'
+import { motion, AnimatePresence } from 'framer-motion'
+
 
 
 export default function Header({ provider }) {
 
-  
+  const store = useSelector((state) => state.eth);
+  console.log("🚀 ~ file: index.js ~ line 14 ~ Header ~ store", store.account)
+
   return (
     <>
       <div
@@ -17,10 +22,20 @@ export default function Header({ provider }) {
       >
         <div className=" mx-auto px-2 sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-between h-16">
-            {/* <WalletLogin
-              provider={provider}
-              h={3} /> */}
-            {/* <div className="absolute inset-y-0 left-0 flex items-center sm:hidden"></div> */}
+            <ConnectButton />
+            <motion.div
+              initial={false}
+              animate={(store.account ) ? 'visible' : 'hidden'}
+              exit={{ opacity: 0 }}
+              transition={{ ease: "easeInOut", duration: .5 }}
+              variants={{
+                visible: { opacity: 1, y: 0 },
+                hidden: { opacity: 0, y: 500 },
+              }}
+              className="ml-3 px-3 py-1 bg-indigo-100 bg-opacity-10 hidden sm:flex rounded-tr-xl rounded-bl-xl text-indigo-400 hover:text-snow transition-colors duration-300"
+            >
+              {store.account}
+            </motion.div>
             <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
               <div className="relative flex-shrink-0 flex items-center text-white mr-6">
                 <motion.div

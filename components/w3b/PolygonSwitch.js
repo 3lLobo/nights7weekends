@@ -12,7 +12,7 @@ export function PolygonSwitch({ provider }) {
         async function switchPolygon() {
             const hexVal = ethers.utils.hexValue(80001)
             console.log("🚀 ~ file: WalletLogin.js ~ line 19 ~ logout ~ hexVal", hexVal)
-            await ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: hexVal }] });
+            await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: hexVal }] });
         }
         switchPolygon();
     }
