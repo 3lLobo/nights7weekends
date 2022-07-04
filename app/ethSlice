@@ -1,0 +1,22 @@
+import { createSlice } from '@reduxjs/toolkit'
+
+
+const initialState = {
+    provider: null,
+}
+
+export const ethSlice = createSlice({
+    name: 'eth',
+    initialState,
+    reducers: {
+        setProvider: (state, action) => {
+            const { provider } = action.payload
+            state.provider = provider
+        },
+        reset: () => initialState,
+    },
+})
+
+export const { setProvider, reset } = ethSlice.actions
+
+export default ethSlice.reducer

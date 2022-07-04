@@ -1,0 +1,40 @@
+import { useEffect } from 'react'
+import { IoSunnyOutline, IoMoonOutline } from 'react-icons/io5'
+import { useSelector, useDispatch } from 'react-redux'
+import { toggleTheme } from '../../app/themeSlice'
+
+export function ColorModeToggle() {
+  const store = useSelector((state) => state.theme)
+  const dispatch = useDispatch()
+
+  // Toggle for tailwind. Src https://tailwindcss.com/docs/dark-mode
+  function toggleButtonClick() {
+    dispatch(toggleTheme())
+  }
+
+  const iconStyle = 'h-4 w-4 '
+  return (
+    <div
+      className='flex flex-grow color-snow hover:scale-110 transition ease-in-out'
+    >
+      <button
+        className="bg-opacity-50 bg-aqua-muted rounded-full border-4 border-navy border-opacity-30 p-2 outline-double outline-4 outline-slate-900"
+        // bg="blueviolet"
+        onClick={toggleButtonClick}
+        aria-label="Toggle"
+      >
+        {store.mode === 'light' ?
+          <IoSunnyOutline
+            color='white'
+            className={iconStyle}
+          />
+          :
+          <IoMoonOutline
+            color='white'
+            className={iconStyle}
+          />}
+      </button>
+    </div>
+  )
+}
+
