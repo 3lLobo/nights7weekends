@@ -9,12 +9,6 @@ export const themeSlice = createSlice({
     toggleTheme: (state) => {
       state.mode = state.mode === 'dark' ? 'light' : 'dark'
 
-      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-      if (state.mode === 'dark') {
-        document?.documentElement.classList.add('dark')
-      } else {
-        document?.documentElement.classList.remove('dark')
-      }
     },
   },
 })

@@ -1,4 +1,4 @@
-import { MyButton } from "../Button/MyButton";
+import { MyButton } from "../Buttons/MyButton";
 import { useSelector, useDispatch } from 'react-redux';
 import { ethers } from "ethers";
 
